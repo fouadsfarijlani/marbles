@@ -2,19 +2,30 @@
 #define GRAPH_H
 
 #include "node.h"
-#include <map>
+#include <unordered_map>
 #include <vector>
 
-using namespace std;
+// I need the following:
+//  {
+//    <<id>> : {
+//      ptr_to_item
+//      array<pointers> siblings
+//    }
+//  }
+
+struct GraphEntry {
+  Node *node;
+  vector<Node *> siblings;
+};
 
 class Graph {
 public:
   Graph();
-  map<int, vector<Node *>> adj_list;
-
-  void show_list();
-  void add_node(Node *node);
-  void add(Node *node);
+  std::unordered_map<int, GraphEntry> adj_list;
+  void add_one(int key, string name);
+  void remove_one(int key);
+  bool key_exist(int id); // this needs fixing
+  void show();
 };
 ;
 

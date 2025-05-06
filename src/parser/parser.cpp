@@ -1,9 +1,6 @@
 #include "parser.h"
 #include <cctype>
 
-int UPPER_CASE_MIN = 60;
-int UPPER_CASE_MAX = 90;
-
 Parser::Parser() {};
 
 vector<string> Parser::split(string &data, const string &delimiter) {
