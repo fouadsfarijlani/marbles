@@ -2,19 +2,15 @@
 #define NODE_H
 
 #include <string>
-#include <vector>
 
 using namespace std;
 
+// TODO: this should be generic
 class Node {
 public:
   Node(int id, string name);
   int id;
   string name;
-  vector<Node *> siblings;
-
-  void add_sibling(Node *sibling);
-  void show_siblibngs();
 };
 
 #endif

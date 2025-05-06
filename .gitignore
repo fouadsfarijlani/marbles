@@ -34,5 +34,8 @@
 # Build
 build/*
 
+# Debug 
+debug/*
+
 # Cache
 .cache/*

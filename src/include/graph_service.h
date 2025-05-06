@@ -2,7 +2,6 @@
 #define GRAPH_SERVICE_H
 
 #include "graph.h"
-#include "node.h"
 #include <map>
 #include <string>
 #include <vector>
