@@ -9,7 +9,8 @@ func main() {
 	node_1.Id = 1
 	node_2 := node.Node{}
 	node_2.Id = 2
+	node_2.Name = "Some Name"
 
-	node_1.AddSibling(&node_2)
-	fmt.Printf("%p, %v\n", node_1, *node_1)
+	node_1.AddIncoming(&node_2)
+	node_1.Show()
 }
