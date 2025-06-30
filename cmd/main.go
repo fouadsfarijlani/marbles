@@ -1,16 +1,16 @@
 package main
 
 import "fmt"
-import "github.com/fouadsfarijlani/marbles/pkg/node"
+
+import "github.com/fouadsfarijlani/marbles/pkg/property"
 
 func main() {
 	fmt.Printf("Welcome to Marbles\n")
-	node_1 := new(node.Node)
-	node_1.Id = 1
-	node_2 := node.Node{}
-	node_2.Id = 2
-	node_2.Name = "Some Name"
+	name := "age"
+	var value int32 = 32
+	nullable := false
+	property := property.NewIntegerProperty(&name, &value, &nullable)
 
-	node_1.AddIncoming(&node_2)
-	node_1.Show()
+	property.Show()
+	fmt.Printf("%v", property)
 }

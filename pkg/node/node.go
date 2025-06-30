@@ -5,7 +5,7 @@ import "fmt"
 type Node struct {
 	Id       int32 //temporary
 	Name     string
-	Data     map[string]interface{}
+	Data     map[string]any
 	Incoming []*Node
 	Outgoing []*Node
 }
