@@ -1,0 +1,10 @@
+[package]
+name = "marbles"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = [ "node","types"]
+
+[dependencies]
+marble_types = { path = "./types" }
