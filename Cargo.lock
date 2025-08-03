@@ -17,5 +17,6 @@ version = "0.1.0"
 name = "marbles"
 version = "0.1.0"
 dependencies = [
+ "marble_node",
  "marble_types",
 ]
