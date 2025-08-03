@@ -1,11 +1,11 @@
-use marble_types::MarbleInteger;
-use marble_types::MarbleString;
+use std::collections::HashMap;
+
+use marble_node::MarbleField;
+use marble_types::{MIntegerConstraintType, MarbleInteger, MarbleString};
 
 fn main() {
     let new_int = MarbleInteger::new();
-
     let new_string = MarbleString::new();
-    println!("{:?}", new_int);
-    println!("{:?}", new_string);
-    println!("Hello, world!");
+
+    let int_field = MarbleField::new_integer();
 }
