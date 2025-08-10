@@ -1,30 +1,57 @@
-#[derive(Debug)]
-pub struct MIntegerConstraint {
-    value: u32,
-    constraint_type: MIntegerConstraintType,
+use std::fmt::Debug;
+
+pub trait IntegerConstraint: Debug {
+    fn new(value: i32) -> Self
+    where
+        Self: Sized;
+
+    fn validate(&self, target: i32) -> bool;
 }
 
-impl MIntegerConstraint {
-    pub fn new(value: u32, constraint_type: MIntegerConstraintType) -> Self {
-        Self {
-            value: value,
-            constraint_type: constraint_type,
-        }
+#[derive(Debug)]
+pub struct LessThanConstraint {
+    value: i32,
+}
+
+impl IntegerConstraint for LessThanConstraint {
+    fn new(new_value: i32) -> Self {
+        Self { value: new_value }
     }
 
-    pub fn less_than(&self, target: u32) -> bool {
-        // taret should be less than constraint
+    fn validate(&self, target: i32) -> bool {
+        // target should be less than constraint
         target < self.value
     }
+}
 
-    pub fn greater_than(&self, target: u32) -> bool {
+#[derive(Debug)]
+pub struct GreaterThanConstraint {
+    value: i32,
+}
+
+impl IntegerConstraint for GreaterThanConstraint {
+    fn new(new_value: i32) -> Self {
+        Self { value: new_value }
+    }
+
+    fn validate(&self, target: i32) -> bool {
         // target should be greater than constraint
         target > self.value
     }
+}
 
-    pub fn equals(&self, target: u32) -> bool {
-        // target should be equals to constraint
-        target == self.value
+#[derive(Debug)]
+pub struct EqualsConstraint {
+    value: i32,
+}
+
+impl IntegerConstraint for EqualsConstraint {
+    fn new(new_value: i32) -> Self {
+        Self { value: new_value }
+    }
+
+    fn validate(&self, target: i32) -> bool {
+        self.value == target
     }
 }
 
