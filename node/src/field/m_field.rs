@@ -16,8 +16,8 @@ impl MarbleField<MarbleInteger, u32> {
         }
     }
 
-    pub fn with_constraint(constraint_value: u32, constraint_type: MIntegerConstraintType) -> Self {
-        let int_type = MarbleInteger::with_constraint(constraint_value, constraint_type);
+    pub fn with_constraint(constraint_type: MIntegerConstraintType, constraint_value: i32) -> Self {
+        let int_type = MarbleInteger::with_constraint(constraint_type, constraint_value);
         Self {
             field_type: int_type,
             value: None,
