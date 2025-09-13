@@ -1,4 +1,4 @@
-use marble_types::{MIntegerConstraintType, MarbleBool, MarbleInteger, MarbleString};
+use marble_types::{MIntegerTypeConstraint, MarbleBool, MarbleInteger, MarbleString};
 
 #[derive(Debug)]
 // TODO: split this up for required fields
@@ -10,14 +10,6 @@ pub struct MarbleField<T, V> {
 impl MarbleField<MarbleInteger, u32> {
     pub fn new_integer() -> Self {
         let int_type = MarbleInteger::new();
-        Self {
-            field_type: int_type,
-            value: None,
-        }
-    }
-
-    pub fn with_constraint(constraint_type: MIntegerConstraintType, constraint_value: i32) -> Self {
-        let int_type = MarbleInteger::with_constraint(constraint_type, constraint_value);
         Self {
             field_type: int_type,
             value: None,
