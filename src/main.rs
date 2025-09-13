@@ -1,11 +1,14 @@
-use marble_node::MarbleField;
-use marble_types::{LessThanConstraint, MIntegerConstraintType, MarbleInteger, MarbleString};
-use std::collections::HashMap;
-use std::ptr::addr_of;
+// Main is just testing gorunds so far
+
+use marble_types::{IntegerValidate, MarbleInteger};
 
 fn main() {
-    let new_int = MarbleInteger::with_constraint(MIntegerConstraintType::LessThan, 32);
+    let mut new_int = MarbleInteger::new();
+    new_int.add_less_than_constraint(4);
+    println!("{:?}", new_int);
 
-    let result = new_int.constraint.as_ref().map(|c| c.validate(30));
-    println!("Results are: {:?}", result);
+    match &new_int.constraint {
+        Some(c) => println!("value 7 is {:?}", c.validate(7)),
+        None => println!("No constraint found"),
+    }
 }

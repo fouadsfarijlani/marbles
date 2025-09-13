@@ -1,45 +1,28 @@
-use crate::{
-    EqualsConstraint, GreaterThanConstraint, IntegerConstraint, LessThanConstraint,
-    MIntegerConstraintType,
-};
+use crate::{EqualsConstraint, GreaterThanConstraint, LessThanConstraint, MIntegerTypeConstraint};
 
 #[derive(Debug)]
 pub struct MarbleInteger {
-    pub constraint: Option<Box<dyn IntegerConstraint>>,
+    pub constraint: Option<MIntegerTypeConstraint>,
 }
 
 impl MarbleInteger {
     pub const NAME: &'static str = "INTEGER";
+
     pub fn new() -> Self {
         Self { constraint: None }
     }
-
-    pub fn with_constraint(constraint_type: MIntegerConstraintType, value: i32) -> Self {
-        match constraint_type {
-            MIntegerConstraintType::LessThan => Self::with_less_than_constraint(value),
-            MIntegerConstraintType::GreasterThan => Self::with_greater_than_constraint(value),
-            MIntegerConstraintType::Equals => Self::with_equals_constraint(value),
-        }
+    pub fn add_less_than_constraint(&mut self, value: i32) {
+        let new_constraint = MIntegerTypeConstraint::new_less_than_constraint(value);
+        self.constraint = Some(new_constraint);
     }
 
-    fn with_less_than_constraint(value: i32) -> Self {
-        let constraint = LessThanConstraint::new(value);
-        Self {
-            constraint: Some(Box::new(constraint)),
-        }
+    pub fn add_greater_than_constraint(&mut self, value: i32) {
+        let constraint = MIntegerTypeConstraint::new_greater_than_constraint(value);
+        self.constraint = Some(constraint);
     }
 
-    fn with_greater_than_constraint(value: i32) -> Self {
-        let constraint = GreaterThanConstraint::new(value);
-        Self {
-            constraint: Some(Box::new(constraint)),
-        }
-    }
-
-    fn with_equals_constraint(value: i32) -> Self {
-        let constraint = EqualsConstraint::new(value);
-        Self {
-            constraint: Some(Box::new(constraint)),
-        }
+    pub fn add_equals(&mut self, value: i32) {
+        let constraint = MIntegerTypeConstraint::new_equals_constraint(value);
+        self.constraint = Some(constraint);
     }
 }
