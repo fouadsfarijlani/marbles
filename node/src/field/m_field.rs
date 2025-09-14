@@ -1,4 +1,4 @@
-use marble_types::{MarbleBool, MarbleInteger, MarbleString};
+use marble_types::{MIntegerTypeConstraint, MarbleBool, MarbleInteger, MarbleString};
 
 #[derive(Debug)]
 // TODO: split this up for required fields
