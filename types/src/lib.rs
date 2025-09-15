@@ -11,14 +11,10 @@ pub mod bool {
     pub mod m_bool;
 }
 
+pub mod m_type;
+
 pub use bool::m_bool::*;
 pub use integer::constraint::*;
 pub use integer::m_integer::*;
+pub use m_type::*;
 pub use string::m_string::*;
-
-#[derive(Debug)]
-pub enum MarbleType {
-    MInteger,
-    MString,
-    Mbool,
-}

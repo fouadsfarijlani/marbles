@@ -1,4 +1,7 @@
-use crate::{EqualsConstraint, GreaterThanConstraint, LessThanConstraint, MIntegerTypeConstraint};
+use crate::{
+    IntegerValidate,
+    MIntegerTypeConstraint,
+};
 
 #[derive(Debug)]
 pub struct MarbleInteger {
@@ -24,5 +27,12 @@ impl MarbleInteger {
     pub fn add_equals(&mut self, value: i32) {
         let constraint = MIntegerTypeConstraint::new_equals_constraint(value);
         self.constraint = Some(constraint);
+    }
+
+    pub fn validate(&self, target: i32) -> Result<bool, &str> {
+        match &self.constraint {
+            Some(c) => Ok(c.validate(target)),
+            None => panic!("No constraint defined for type Integer"),
+        }
     }
 }
