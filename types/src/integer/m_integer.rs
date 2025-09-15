@@ -1,5 +1,5 @@
 use crate::{
-    EqualsConstraint, GreaterThanConstraint, IntegerValidate, LessThanConstraint,
+    IntegerValidate,
     MIntegerTypeConstraint,
 };
 

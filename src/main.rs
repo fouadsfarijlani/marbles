@@ -1,6 +1,6 @@
 // Main is just testing gorunds so far
 
-use marble_types::{IntegerValidate, MarbleInteger};
+use marble_types::{IntegerValidate, MType, MarbleInteger};
 
 fn main() {
     let mut new_int = MarbleInteger::new();
@@ -15,4 +15,6 @@ fn main() {
         Some(c) => println!("value 7 is {:?}", c.validate(7)),
         None => println!("No constraint found"),
     }
+
+    let new_type = MType::new_integer_type();
 }
